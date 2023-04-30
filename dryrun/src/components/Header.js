@@ -1,21 +1,56 @@
-import React from 'react'
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import CssBaseline from '@mui/material/CssBaseline';
+import React from "react";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Link from "@mui/material/Link";
 
 function Header() {
   return (
     <React.Fragment>
-        <CssBaseline>
-            <AppBar position="static">
-                <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>PeloPals</Typography>
-                </Toolbar>
-            </AppBar>
-        </CssBaseline>
+      <CssBaseline>
+        <AppBar
+          position="static"
+          color="default"
+          elevation={0}
+          sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
+        >
+          <Toolbar sx={{ flexWrap: "wrap" }}>
+            <Typography
+              variant="h6"
+              color="inherit"
+              noWrap
+              sx={{ flexGrow: 1 }}
+            >
+              PeloPals
+            </Typography>
+            <nav>
+              <Link
+                variant="button"
+                color="text.primary"
+                href="/"
+                sx={{ my: 1, mx: 1.5 }}
+              >
+                Home
+              </Link>
+              <Link
+                variant="button"
+                color="text.primary"
+                href="/register"
+                sx={{ my: 1, mx: 1.5 }}
+              >
+                Sign Up
+              </Link>
+            </nav>
+            <Button href="/signin" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+              Login
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </CssBaseline>
     </React.Fragment>
-  )
+  );
 }
 
-export default Header
+export default Header;

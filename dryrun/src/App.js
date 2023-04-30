@@ -1,50 +1,26 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import DataLoadingComponent from "./components/DataLoading";
+import Announcement from "./components/Announcement";
 
 function App() {
-  const [result, setResult] = useState([]);
+  const DataLoading = DataLoadingComponent(Announcement);
+  const [appState, setAppState] = useState({
+    loading: true,
+    posts: null,
+  });
   useEffect(() => {
     let URL = "https://dryrun-api.herokuapp.com/";
-    axios.get(URL).then((response) => setResult(response.data));
-  }, []);
-
-  function MediaCard() {
-    return (
-      <Card sx={{ maxWidth: 345 }}>
-        <CardMedia
-          sx={{ height: 140 }}
-          image="https://media.gq-magazine.co.uk/photos/5d13a8dc9a22c2e3a894925d/16:9/pass/01-gq-05jun19_b.jpg"
-          title="Ben Alldis"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            Announcements
-          </Typography>
-          {result.map((r) => {
-            return (
-              <React.Fragment key={r.title}>
-                <Typography variant="body2" color="text.secondary">
-                  {r.title}
-                </Typography>
-                <Typography variant="p" color="text.secondary">
-                  {r.content} | {r.author}
-                </Typography>
-              </React.Fragment>
-            );
-          })}
-        </CardContent>
-      </Card>
-    );
-  }
+    axios.get(URL).then((res) => {
+      let allResults = res.data;
+      setAppState({ loading: false, posts: allResults });
+    });
+  }, [setAppState]);
 
   return (
-    <React.Fragment>
-      <MediaCard />
-    </React.Fragment>
+    <div>
+      <DataLoading isLoading={appState.loading} posts={appState.posts} />
+    </div>
   );
 }
 

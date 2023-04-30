@@ -95,7 +95,6 @@ function Register() {
                   fullWidth
                   id="firstName"
                   label="First Name"
-                  autoFocus
                   onChange={handleChange}
                 />
               </Grid>

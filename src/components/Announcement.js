@@ -46,6 +46,7 @@ function Announcement(props) {
             align="center"
             color="text.secondary"
             component="p"
+            key={post.title}
           >
             {post.title} | {post.content}
           </Typography>

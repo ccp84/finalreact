@@ -10,3 +10,4 @@
 - Install react query `npm i @tanstack/react-query`
 
 * also installed axios `npm install axios`
+* Using axios interceptors for token refresh [here](https://thedutchlab.com/blog/using-axios-interceptors-for-refreshing-your-api-token)

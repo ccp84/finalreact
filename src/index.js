@@ -9,6 +9,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
 import SignIn from "./components/SignIn";
+import SignOut from "./components/SignOut";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/register" element={<Register />} />
         <Route path="/signin" element={<SignIn />} />
+        <Route path="/signout" element={<SignOut />} />
       </Routes>
       <Footer />
     </BrowserRouter>

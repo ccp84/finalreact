@@ -46,6 +46,9 @@ function Header() {
             <Button href="/signin" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
               Login
             </Button>
+            <Button href="/signout" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </CssBaseline>

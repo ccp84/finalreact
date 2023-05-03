@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance from "./axios";
 import DataLoadingComponent from "./components/DataLoading";
 import Announcement from "./components/Announcement";
 
@@ -10,8 +10,7 @@ function App() {
     posts: null,
   });
   useEffect(() => {
-    let URL = "https://dryrun-api.herokuapp.com/";
-    axios.get(URL).then((res) => {
+    axiosInstance.get('').then((res) => {
       let allResults = res.data;
       setAppState({ loading: false, posts: allResults });
     });

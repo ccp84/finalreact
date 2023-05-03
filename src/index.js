@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
+import EditAnnouncement from "./components/EditAnnouncement";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/editannouncement/:id" element={<EditAnnouncement />} />
       </Routes>
       <Footer />
     </BrowserRouter>

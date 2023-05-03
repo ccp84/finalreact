@@ -53,8 +53,8 @@ function SignIn() {
         axiosInstance.defaults.headers["Authorization"] =
           "JWT " + localStorage.getItem("access_token");
         navigate("/");
-        //console.log(res);
-        //console.log(res.data);
+        console.log(res);
+        console.log(res.data);
       });
   };
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import Link from "@mui/material/Link";
 
 function Announcement(props) {
   const { posts } = props;
@@ -41,15 +42,16 @@ function Announcement(props) {
       </Typography>
       {posts.map((post) => {
         return (
-          <Typography
-            variant="h5"
-            align="center"
-            color="text.secondary"
-            component="p"
-            key={post.id}
-          >
-            {post.title} | {post.content}
-          </Typography>
+          <Link href={"editannouncement/" + post.id} key={post.id}>
+            <Typography
+              variant="h5"
+              align="center"
+              color="text.secondary"
+              component="p"
+            >
+              {post.title} | {post.content}
+            </Typography>
+          </Link>
         );
       })}
     </Container>

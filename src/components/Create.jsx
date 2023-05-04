@@ -7,20 +7,18 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import DrawIcon from "@mui/icons-material/Draw";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-function SignIn() {
+function Create() {
   // set the redirect on success
   const navigate = useNavigate();
   // create the sign in object. using object freeze secures the data
   const initialFormData = Object.freeze({
-    username: "",
-    password: "",
+    title: "",
+    content: "",
   });
   const [formData, updateFormData] = useState(initialFormData);
 
@@ -40,16 +38,13 @@ function SignIn() {
     console.log(formData);
 
     axiosInstance
-      // add the registration end point to the base url
-      .post(`api/token/`, {
-        user_name: formData.username,
-        password: formData.password,
+      .post("", {
+        title: formData.title,
+        content: formData.content,
+        category: 1,
+        author: 1,
       })
       .then((res) => {
-        localStorage.setItem("access_token", res.data.access);
-        localStorage.setItem("refresh_token", res.data.refresh);
-        axiosInstance.defaults.headers["Authorization"] =
-          "JWT " + localStorage.getItem("access_token");
         navigate("/");
         console.log(res);
         console.log(res.data);
@@ -68,31 +63,32 @@ function SignIn() {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
+          <DrawIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Create New Announcement
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
             required
             fullWidth
-            id="username"
-            label="Username"
-            name="username"
-            autoComplete="username"
+            id="title"
+            label="Title"
+            name="title"
+            autoComplete="title"
             onChange={handleChange}
           />
           <TextField
             margin="normal"
             required
             fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+            name="content"
+            label="Content"
+            type="content"
+            id="content"
+            autoComplete="content"
+            multiline
             onChange={handleChange}
           />
           <Button
@@ -101,19 +97,12 @@ function SignIn() {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            Add Announcement
           </Button>
-          <Grid container>
-            <Grid item>
-              <Link href="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
         </Box>
       </Box>
     </Container>
   );
 }
 
-export default SignIn;
+export default Create;

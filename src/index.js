@@ -11,6 +11,8 @@ import Register from "./components/Register";
 import SignIn from "./components/SignIn";
 import SignOut from "./components/SignOut";
 import EditAnnouncement from "./components/EditAnnouncement";
+import MyAnnouncements from "./components/MyAnnouncements";
+import Create from "./components/Create";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +26,9 @@ root.render(
         <Route path="/register" element={<Register />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/myannouncements" element={<MyAnnouncements />} />
         <Route path="/editannouncement/:id" element={<EditAnnouncement />} />
+        <Route path="/createannouncement" element={<Create />} />
       </Routes>
       <Footer />
     </BrowserRouter>

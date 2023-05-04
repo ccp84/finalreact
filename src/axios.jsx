@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 // Set api main endpoint
 const baseURL = "https://dryrun-api.herokuapp.com/";
 
@@ -45,9 +45,7 @@ axiosInstance.interceptors.response.use(
       const refreshToken = localStorage.getItem("refresh_token");
 
       if (refreshToken) {
-        const tokenParts = Buffer.from(refreshToken.split(".")[1]).toString(
-          "base64"
-        );
+        const tokenParts = JSON.parse(atob(refreshToken.split(".")[1]));
 
         // exp date in token is expressed in seconds, while now() returns milliseconds:
         const now = Math.ceil(Date.now() / 1000);
